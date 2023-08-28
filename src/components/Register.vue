@@ -1,7 +1,7 @@
 <template>
     <div class="col-md-12">
         <div class="card card-container">
-            <img class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" id="profile-img" />
+            <!-- <img class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" id="profile-img" /> -->
             <Form @submit="handleRegister" :validation-schema="schema">
                 <div v-if="!successful">
                     <div class="form-group">
@@ -12,7 +12,7 @@
                             class="form-control"
                             id="username"
                         />
-                        <ErrorMessage name="username" class="invalid-feedback" />
+                        <ErrorMessage name="username" class="alert alert-danger" />
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
@@ -22,7 +22,7 @@
                             class="form-control"
                             id="email"
                         />
-                        <ErrorMessage name="email" class="invalid-feedback" />
+                        <ErrorMessage name="email" class="alert alert-danger"/>
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
@@ -32,7 +32,7 @@
                             class="form-control"
                             id="password"
                         />
-                        <ErrorMessage name="password" class="invalid-feedback" />
+                        <ErrorMessage name="password" class="alert alert-danger" />
                     </div>
 
                     <div class="form-group">
@@ -70,7 +70,7 @@ export default {
         const schema = yup.object().shape({
             username: yup.string().required('username is required').min(3, 'username must be at least 3 characters').max(20, 'username must be at most 20 characters'),
             email: yup.string().required('email is required').email('email must be a valid email address'),
-            password: yup.string().required('pw is required').min(6, 'pw must be at least 6 characters').max(40, 'pw must be at most 40 characters'),
+            password: yup.string().required('pw is required').min(8, 'pw must be at least 8 characters').max(20, 'pw must be at most 40 characters'),
         });
 
         return {
@@ -86,23 +86,26 @@ export default {
         },
     },
     mounted() {
+        // redirect to home if already logged in
         if (this.loggedIn) {
             this.$router.push('/profile');
         }
     },
     methods: {
         handleRegister(user) {
+            console.log(user);
             this.message = '';
             this.successful = false;
             this.isSubmitting = true;
 
             this.$store.dispatch('auth/register', user)
-                .then((data) => {
-                    this.message = data.message;
-                    this.successful = true;
+                .then(() => {
+                    // console.log(data);
+                    // redirect to login
+                    this.$router.push('/login');
                 })
-                .catch(() => {
-                    this.message = 'Registration failed!';
+                .catch((err) => {
+                    this.message = err.response.data.message;
                     this.successful = false;
                 })
                 .finally(() => {

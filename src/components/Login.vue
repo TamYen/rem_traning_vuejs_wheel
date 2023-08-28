@@ -1,7 +1,7 @@
 <template>
     <div class="col=md-12">
         <div class="card card-container">
-            <img class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" id="profile-img" />
+            <!-- <img class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" id="profile-img" /> -->
             <Form @submit="handleLogin" :validation-schema="schema">
                 <div class="form-group">
                     <label for="username">Username</label>
@@ -11,7 +11,7 @@
                         class="form-control"
                         id="username"
                     />
-                    <ErrorMessage name="username" class="invalid-feedback" />
+                    <ErrorMessage name="username" />
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
@@ -21,7 +21,7 @@
                         class="form-control"
                         id="password"
                     />
-                    <ErrorMessage name="password" class="invalid-feedback" />
+                    <ErrorMessage name="password" />
                 </div>
 
                 <div class="form-group">
@@ -57,8 +57,8 @@ export default {
         });
 
         return {
-            // username: '',
-            // password: '',
+            username: '',
+            password: '',
             message: '',
             isSubmitting: false,
             schema,
