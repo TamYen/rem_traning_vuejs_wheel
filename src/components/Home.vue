@@ -12,6 +12,9 @@
     </div>
     <div>
         <h4>
+            {{ prizeRes }}
+        </h4>
+        <h4>
             {{ total }}
         </h4>
         <p>Zero <input type="number" v-model="rate_1"></p>
@@ -102,9 +105,10 @@ export default {
             ],
         };
     },
-    mounted() {
+    mounted() { // khi refresh trang web, se chay ham nay
         UserService.getPublicContent()
             .then((response) => {
+                console.log(response.data);
                 this.content = response.data;
             })
             .catch((error) => {
@@ -114,9 +118,11 @@ export default {
         // this.wheelEl.value.startRotate() // Can start rotation
     },
     computed: {
-        // prizeRes() {
-        //     return this.prizesCanvas.find(item => item.id === this.prizeId) || this.prizesCanvas[0];
-        // },
+        // rate_1
+        prizeRes() {
+            return this.rate_1;
+            // return this.prizesCanvas.find(item => item.id === this.prizeId) || this.prizesCanvas[0];
+        },
     },
     methods: {
         // Simulate the request back-end interface

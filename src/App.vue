@@ -1,10 +1,10 @@
 <template>
-    <div id="app">
+    <div id="app_aaa">
         <nav class="navbar navbar-expand navbar-dark bg-dark">
-            <a href="/" class="navbar-brand">huhu</a>
+            <!-- <a href="/" class="navbar-brand">huhu</a> -->
             <div class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <router-link to="/" class="nav-link">Home</router-link>
+                    <router-link :to="{name: 'Home'}" class="nav-link">Home</router-link>
                 </li>
                 <li class="nav-item" v-if="showModeratorBoard">
                     <router-link to="/mod" class="nav-link">Moderator Board</router-link>
@@ -14,6 +14,9 @@
                 </li>
                 <li class="nav-item" v-if="currentUser">
                     <router-link to="/user" class="nav-link">User</router-link>
+                </li>
+                <li class="nav-item" >
+                    <router-link to="/kanban" class="nav-link">Kanban</router-link>
                 </li>
             </div>
 
@@ -37,7 +40,7 @@
 
         </nav>
 
-        <div class="container mt-3">
+        <div class="container mt-9">
             <router-view></router-view>
         </div>
     </div>

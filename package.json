@@ -13,7 +13,9 @@
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/vue-fontawesome": "^3.0.0-5",
+    "@mdi/font": "^7.3.67",
     "@vue/cli-plugin-eslint": "^5.0.8",
+    "admin-lte": "^3.2",
     "axios": "^1.4.0",
     "bootstrap": "^4.6.2",
     "core-js": "^3.8.3",
@@ -23,7 +25,9 @@
     "vue": "^3.2.13",
     "vue-fortune-wheel": "^2.1.0",
     "vue-router": "^4.2.4",
+    "vuetify": "^3.4.7",
     "vuex": "^4.1.0",
+    "webfontloader": "^1.6.28",
     "yup": "^1.2.0"
   },
   "devDependencies": {
